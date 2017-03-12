@@ -28,9 +28,12 @@ namespace OpenPop.Mime.Decode
 			{
 				using (MemoryStream memoryStream = new MemoryStream())
 				{
-					base64Encoded = base64Encoded.Replace("\r\n", "");
-					base64Encoded = base64Encoded.Replace("\t", "");
-					base64Encoded = base64Encoded.Replace(" ", "");
+					//base64Encoded = base64Encoded.Replace("\r\n", "");
+                    			//base64Encoded = base64Encoded.Replace("\t", "");
+                   			 //base64Encoded = base64Encoded.Replace(" ", "");
+                   			 //base64Encoded = base64Encoded.Replace("!", "");
+					
+					 base64Encoded = Regex.Replace(base64Encoded, "[^A-Za-z0-9/+]", "");
 
 					byte[] inputBytes = Encoding.ASCII.GetBytes(base64Encoded);
 
